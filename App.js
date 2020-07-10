@@ -1,6 +1,3 @@
-// import Example from './examples/0-Switch';
-// import Example from './examples/1-Stack';
-// export default Example;
 
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
