@@ -1,0 +1,12 @@
+{
+  "name": "cs50m2020",
+  "displayName": "cs50m2020",
+  "expo": {
+    "name": "cs50m2020",
+    "slug": "cs50m2020",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
