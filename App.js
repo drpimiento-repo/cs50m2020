@@ -1,4 +1,3 @@
-
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View } from 'react-native';
@@ -21,6 +20,8 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 import {Provider} from 'react-redux'
 
+import { PersistGate } from 'redux-persist/integration/react'
+
 import AddContactScreen from "./screens/AddContactScreen";
 import SettingsScreen from "./screens/SettingsScreen";
 import ContactListScreen from "./screens/ContactListScreen";
@@ -28,7 +29,8 @@ import ContactDetailsScreen from "./screens/ContactDetailsScreen";
 import LoginScreen from "./screens/LoginScreen";
 import {fetchUsers} from './api'
 import contacts from "./contacts";
-import store from './redux/store'
+import {store, persistor} from './redux/store'
+
 
 const MainStack = createStackNavigator(
   {
@@ -99,12 +101,9 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <AppContainer
-          screenProps={{
-            contacts: this.state.contacts,
-            addContact: this.addContact
-          }}
-        />
+      	<PersistGate loading={null} persistor={persistor}>
+       		<AppContainer screenProps={{contacts: this.state.contacts, addContact: this.addContact}} />
+		</PersistGate>
       </Provider>
     );
   }

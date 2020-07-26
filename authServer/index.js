@@ -12,14 +12,16 @@ const app = express()
 app.use(bodyParser.json())
 
 app.post('*', (req, res) => {
-  const {username, password} = req.body
 
-  if (!username || !password) return res.status(400).send('Missing username or password')
+  const {username, password} = req.body
+  if (!username || !password){
+	return res.status(400).send('Missing username or password')
+  }
   // in practice, this is potentially revealing too much information.
   // an attacker can probe the server to find all of the usernames.
   if (!users[username]) return res.status(403).send('User does not exist')
   if (users[username] !== password) return res.status(403).send('Incorrect password')
-  return res.status(200).send()
+  return res.json({token: 'thisIsARealToken'});
 })
 
 // catch 404

@@ -7,7 +7,6 @@ export default class ContactDetailsScreen extends React.Component {
       headerTitle: navigation.getParam('name'),
     };
   };
-
   render() {
     return (
       <View>

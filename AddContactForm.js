@@ -1,12 +1,5 @@
 import React from 'react'
-import {
-  Button,
-  KeyboardAvoidingView,
-  StyleSheet,
-  TextInput,
-  View
-} from 'react-native'
-// import {Constants} from 'expo'
+import {Button, KeyboardAvoidingView, StyleSheet, TextInput, View} from 'react-native'
 
 export default class AddContactForm extends React.Component {
   state = {
@@ -44,19 +37,20 @@ export default class AddContactForm extends React.Component {
   };
 
   validateForm = () => {
-    const names = this.state.name.split(' ');
+    console.log(this.state)
+    const names = this.state.name.split(' ')
     if (
       +this.state.phone >= 0 &&
       this.state.phone.length === 10 &&
-      names.length >= 2 &&
+      names.length >= 3 &&
       names[0] &&
       names[1]
     ) {
-      this.setState({ isFormValid: true });
+      this.setState({isFormValid: true})
     } else {
-      this.setState({ isFormValid: false });
+      this.setState({isFormValid: false})
     }
-  };
+  }
 
   validateForm2 = () => {
     if (

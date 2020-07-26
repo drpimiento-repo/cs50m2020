@@ -36,7 +36,7 @@ class ContactListScreen extends React.Component {
         <Button title="toggle contacts" onPress={this.toggleContacts} />
         {this.state.showContacts && (
           <SectionListContacts
-            contacts={this.props.screenProps.contacts}
+            contacts={this.props.contacts}
             onSelectContact={this.handleSelectContact}
           />
         )}
