@@ -1,11 +1,19 @@
 import {combineReducers} from 'redux'
 
-import {UPDATE_USER, UPDATE_CONTACT, LOG_IN_SENT, LOG_IN_FULFILLED, LOG_IN_REJECTED} from './actions'
+import contacts from '../contacts'
+
+import {CHANGE_FIRST_CONTACT, UPDATE_USER, UPDATE_CONTACT, LOG_IN_FULFILLED, LOG_IN_REJECTED} from './actions'
 
 const merge = (prev, next) => Object.assign({}, prev, next)
 
-const contactReducer = (state = [], action) => {
+const contactReducer = (state = contacts, action) => {
   if (action.type === UPDATE_CONTACT) return [...state, action.payload]
+  if (action.type === CHANGE_FIRST_CONTACT) {
+    const [firstContact, ...rest] = state
+    if (!firstContact) return state
+    const newContact = {...firstContact, name: 'Jordan Hayashi'}
+    return [newContact, ...rest]
+  }
   return state
 }
 
