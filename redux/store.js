@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
+import {addContact} from './actions'
 import reducer from './reducer'
 
 const persistConfig = {
@@ -24,9 +25,6 @@ const thunkMiddleware = store => next => action => {
 
 export const store = createStore(persistedReducer, applyMiddleware(thunk))
 export const persistor = persistStore(store)
-
-// non-persistent store
-export default createStore(reducer, applyMiddleware(thunk))
 
 /*
 store.dispatch(updateUser({foo: 'foo'}))

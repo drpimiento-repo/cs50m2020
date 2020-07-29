@@ -12,8 +12,8 @@ const app = express()
 app.use(bodyParser.json())
 
 app.post('*', (req, res) => {
-
   const {username, password} = req.body
+
   if (!username || !password){
 	return res.status(400).send('Missing username or password')
   }
